@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypePraticien index{% endblock %}
+
+{% block body %}
+    <h1>TypePraticien index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>TypCode</th>
+                <th>TypLibelle</th>
+                <th>TypLieu</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_praticien in type_praticiens %}
+            <tr>
+                <td>{{ type_praticien.typCode }}</td>
+                <td>{{ type_praticien.typLibelle }}</td>
+                <td>{{ type_praticien.typLieu }}</td>
+                <td>
+                    <a href="{{ path('type_praticien_show', {'typCode': type_praticien.typCode}) }}">show</a>
+                    <a href="{{ path('type_praticien_edit', {'typCode': type_praticien.typCode}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('type_praticien_new') }}">Create new</a>
+{% endblock %}

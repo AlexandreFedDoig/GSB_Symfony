@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ActiviteCompl{% endblock %}
+
+{% block body %}
+    <h1>ActiviteCompl</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>AcNum</th>
+                <td>{{ activite_compl.acNum }}</td>
+            </tr>
+            <tr>
+                <th>AcDate</th>
+                <td>{{ activite_compl.acDate ? activite_compl.acDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>AcLieu</th>
+                <td>{{ activite_compl.acLieu }}</td>
+            </tr>
+            <tr>
+                <th>AcTheme</th>
+                <td>{{ activite_compl.acTheme }}</td>
+            </tr>
+            <tr>
+                <th>AcMotif</th>
+                <td>{{ activite_compl.acMotif }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('activite_compl_index') }}">back to list</a>
+
+    <a href="{{ path('activite_compl_edit', {'acNum': activite_compl.acNum}) }}">edit</a>
+
+    {{ include('activite_compl/_delete_form.html.twig') }}
+{% endblock %}

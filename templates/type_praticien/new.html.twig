@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TypePraticien{% endblock %}
+
+{% block body %}
+    <h1>Create new TypePraticien</h1>
+
+    {{ include('type_praticien/_form.html.twig') }}
+
+    <a href="{{ path('type_praticien_index') }}">back to list</a>
+{% endblock %}

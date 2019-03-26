@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ActiviteCompl index{% endblock %}
+
+{% block body %}
+    <h1>ActiviteCompl index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>AcNum</th>
+                <th>AcDate</th>
+                <th>AcLieu</th>
+                <th>AcTheme</th>
+                <th>AcMotif</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for activite_compl in activite_compls %}
+            <tr>
+                <td>{{ activite_compl.acNum }}</td>
+                <td>{{ activite_compl.acDate ? activite_compl.acDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ activite_compl.acLieu }}</td>
+                <td>{{ activite_compl.acTheme }}</td>
+                <td>{{ activite_compl.acMotif }}</td>
+                <td>
+                    <a href="{{ path('activite_compl_show', {'acNum': activite_compl.acNum}) }}">show</a>
+                    <a href="{{ path('activite_compl_edit', {'acNum': activite_compl.acNum}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('activite_compl_new') }}">Create new</a>
+{% endblock %}

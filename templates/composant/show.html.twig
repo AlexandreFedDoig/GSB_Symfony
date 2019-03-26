@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Composant{% endblock %}
+
+{% block body %}
+    <h1>Composant</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>CmpCode</th>
+                <td>{{ composant.cmpCode }}</td>
+            </tr>
+            <tr>
+                <th>CmpLibelle</th>
+                <td>{{ composant.cmpLibelle }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('composant_index') }}">back to list</a>
+
+    <a href="{{ path('composant_edit', {'cmpCode': composant.cmpCode}) }}">edit</a>
+
+    {{ include('composant/_delete_form.html.twig') }}
+{% endblock %}

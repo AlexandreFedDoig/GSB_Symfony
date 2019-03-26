@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Praticien{% endblock %}
+
+{% block body %}
+    <h1>Praticien</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>PraNum</th>
+                <td>{{ praticien.praNum }}</td>
+            </tr>
+            <tr>
+                <th>PraNom</th>
+                <td>{{ praticien.praNom }}</td>
+            </tr>
+            <tr>
+                <th>PraPrenom</th>
+                <td>{{ praticien.praPrenom }}</td>
+            </tr>
+            <tr>
+                <th>PraAdresse</th>
+                <td>{{ praticien.praAdresse }}</td>
+            </tr>
+            <tr>
+                <th>PraCp</th>
+                <td>{{ praticien.praCp }}</td>
+            </tr>
+            <tr>
+                <th>PraVille</th>
+                <td>{{ praticien.praVille }}</td>
+            </tr>
+            <tr>
+                <th>PraCoefnotoriete</th>
+                <td>{{ praticien.praCoefnotoriete }}</td>
+            </tr>
+            <tr>
+                <th>TypCode</th>
+                <td>{{ praticien.typCode }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('praticien_index') }}">back to list</a>
+
+    <a href="{{ path('praticien_edit', {'praNum': praticien.praNum}) }}">edit</a>
+
+    {{ include('praticien/_delete_form.html.twig') }}
+{% endblock %}

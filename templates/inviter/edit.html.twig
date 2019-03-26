@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Inviter{% endblock %}
+
+{% block body %}
+    <h1>Edit Inviter</h1>
+
+    {{ include('inviter/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('inviter_index') }}">back to list</a>
+
+    {{ include('inviter/_delete_form.html.twig') }}
+{% endblock %}

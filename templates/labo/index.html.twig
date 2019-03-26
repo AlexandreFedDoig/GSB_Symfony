@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Labo index{% endblock %}
+
+{% block body %}
+    <h1>Labo index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>LabCode</th>
+                <th>LabNom</th>
+                <th>LabChefvente</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for labo in labos %}
+            <tr>
+                <td>{{ labo.labCode }}</td>
+                <td>{{ labo.labNom }}</td>
+                <td>{{ labo.labChefvente }}</td>
+                <td>
+                    <a href="{{ path('labo_show', {'labCode': labo.labCode}) }}">show</a>
+                    <a href="{{ path('labo_edit', {'labCode': labo.labCode}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('labo_new') }}">Create new</a>
+{% endblock %}

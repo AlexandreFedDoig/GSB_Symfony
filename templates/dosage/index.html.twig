@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dosage index{% endblock %}
+
+{% block body %}
+    <h1>Dosage index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>DosCode</th>
+                <th>DosQuantite</th>
+                <th>DosUnite</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dosage in dosages %}
+            <tr>
+                <td>{{ dosage.dosCode }}</td>
+                <td>{{ dosage.dosQuantite }}</td>
+                <td>{{ dosage.dosUnite }}</td>
+                <td>
+                    <a href="{{ path('dosage_show', {'dosCode': dosage.dosCode}) }}">show</a>
+                    <a href="{{ path('dosage_edit', {'dosCode': dosage.dosCode}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('dosage_new') }}">Create new</a>
+{% endblock %}

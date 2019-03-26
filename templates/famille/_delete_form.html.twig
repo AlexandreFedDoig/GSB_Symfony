@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('famille_delete', {'famCode': famille.famCode}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ famille.famCode) }}">
+    <button class="btn">Delete</button>
+</form>

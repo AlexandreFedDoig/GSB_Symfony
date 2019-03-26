@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inviter{% endblock %}
+
+{% block body %}
+    <h1>Inviter</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>AcNum</th>
+                <td>{{ inviter.acNum }}</td>
+            </tr>
+            <tr>
+                <th>PraNum</th>
+                <td>{{ inviter.praNum }}</td>
+            </tr>
+            <tr>
+                <th>Specialisteon</th>
+                <td>{{ inviter.specialisteon ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('inviter_index') }}">back to list</a>
+
+    <a href="{{ path('inviter_edit', {'acNum': inviter.acNum}) }}">edit</a>
+
+    {{ include('inviter/_delete_form.html.twig') }}
+{% endblock %}

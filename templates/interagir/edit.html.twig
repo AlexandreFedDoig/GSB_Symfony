@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Interagir{% endblock %}
+
+{% block body %}
+    <h1>Edit Interagir</h1>
+
+    {{ include('interagir/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('interagir_index') }}">back to list</a>
+
+    {{ include('interagir/_delete_form.html.twig') }}
+{% endblock %}

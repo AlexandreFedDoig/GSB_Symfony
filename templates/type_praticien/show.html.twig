@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypePraticien{% endblock %}
+
+{% block body %}
+    <h1>TypePraticien</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>TypCode</th>
+                <td>{{ type_praticien.typCode }}</td>
+            </tr>
+            <tr>
+                <th>TypLibelle</th>
+                <td>{{ type_praticien.typLibelle }}</td>
+            </tr>
+            <tr>
+                <th>TypLieu</th>
+                <td>{{ type_praticien.typLieu }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('type_praticien_index') }}">back to list</a>
+
+    <a href="{{ path('type_praticien_edit', {'typCode': type_praticien.typCode}) }}">edit</a>
+
+    {{ include('type_praticien/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Formuler{% endblock %}
+
+{% block body %}
+    <h1>Create new Formuler</h1>
+
+    {{ include('formuler/_form.html.twig') }}
+
+    <a href="{{ path('formuler_index') }}">back to list</a>
+{% endblock %}

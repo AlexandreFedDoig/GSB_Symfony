@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Posseder index{% endblock %}
+
+{% block body %}
+    <h1>Posseder index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>PraNum</th>
+                <th>SpeCode</th>
+                <th>PosDiplome</th>
+                <th>PosCoefprescription</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for posseder in posseders %}
+            <tr>
+                <td>{{ posseder.praNum }}</td>
+                <td>{{ posseder.speCode }}</td>
+                <td>{{ posseder.posDiplome }}</td>
+                <td>{{ posseder.posCoefprescription }}</td>
+                <td>
+                    <a href="{{ path('posseder_show', {'praNum': posseder.praNum}) }}">show</a>
+                    <a href="{{ path('posseder_edit', {'praNum': posseder.praNum}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('posseder_new') }}">Create new</a>
+{% endblock %}

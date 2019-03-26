@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formuler index{% endblock %}
+
+{% block body %}
+    <h1>Formuler index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>MedDepotlegal</th>
+                <th>PreCode</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formuler in formulers %}
+            <tr>
+                <td>{{ formuler.medDepotlegal }}</td>
+                <td>{{ formuler.preCode }}</td>
+                <td>
+                    <a href="{{ path('formuler_show', {'medDepotlegal': formuler.medDepotlegal}) }}">show</a>
+                    <a href="{{ path('formuler_edit', {'medDepotlegal': formuler.medDepotlegal}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('formuler_new') }}">Create new</a>
+{% endblock %}

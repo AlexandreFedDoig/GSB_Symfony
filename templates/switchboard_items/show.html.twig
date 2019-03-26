@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SwitchboardItems{% endblock %}
+
+{% block body %}
+    <h1>SwitchboardItems</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Switchboardid</th>
+                <td>{{ switchboard_item.switchboardid }}</td>
+            </tr>
+            <tr>
+                <th>Itemnumber</th>
+                <td>{{ switchboard_item.itemnumber }}</td>
+            </tr>
+            <tr>
+                <th>Itemtext</th>
+                <td>{{ switchboard_item.itemtext }}</td>
+            </tr>
+            <tr>
+                <th>Command</th>
+                <td>{{ switchboard_item.command }}</td>
+            </tr>
+            <tr>
+                <th>Argument</th>
+                <td>{{ switchboard_item.argument }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('switchboard_items_index') }}">back to list</a>
+
+    <a href="{{ path('switchboard_items_edit', {'switchboardid': switchboard_item.switchboardid}) }}">edit</a>
+
+    {{ include('switchboard_items/_delete_form.html.twig') }}
+{% endblock %}

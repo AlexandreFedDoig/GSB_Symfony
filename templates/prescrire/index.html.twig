@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prescrire index{% endblock %}
+
+{% block body %}
+    <h1>Prescrire index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>MedDepotlegal</th>
+                <th>TinCode</th>
+                <th>DosCode</th>
+                <th>PrePosologie</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for prescrire in prescrires %}
+            <tr>
+                <td>{{ prescrire.medDepotlegal }}</td>
+                <td>{{ prescrire.tinCode }}</td>
+                <td>{{ prescrire.dosCode }}</td>
+                <td>{{ prescrire.prePosologie }}</td>
+                <td>
+                    <a href="{{ path('prescrire_show', {'medDepotlegal': prescrire.medDepotlegal}) }}">show</a>
+                    <a href="{{ path('prescrire_edit', {'medDepotlegal': prescrire.medDepotlegal}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('prescrire_new') }}">Create new</a>
+{% endblock %}

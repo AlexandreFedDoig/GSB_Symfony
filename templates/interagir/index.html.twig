@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Interagir index{% endblock %}
+
+{% block body %}
+    <h1>Interagir index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>MedPerturbateur</th>
+                <th>MedMedPerturbe</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for interagir in interagirs %}
+            <tr>
+                <td>{{ interagir.medPerturbateur }}</td>
+                <td>{{ interagir.medMedPerturbe }}</td>
+                <td>
+                    <a href="{{ path('interagir_show', {'medPerturbateur': interagir.medPerturbateur}) }}">show</a>
+                    <a href="{{ path('interagir_edit', {'medPerturbateur': interagir.medPerturbateur}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('interagir_new') }}">Create new</a>
+{% endblock %}

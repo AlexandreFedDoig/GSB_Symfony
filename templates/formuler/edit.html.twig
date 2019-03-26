@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Formuler{% endblock %}
+
+{% block body %}
+    <h1>Edit Formuler</h1>
+
+    {{ include('formuler/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('formuler_index') }}">back to list</a>
+
+    {{ include('formuler/_delete_form.html.twig') }}
+{% endblock %}

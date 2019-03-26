@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Realiser{% endblock %}
+
+{% block body %}
+    <h1>Realiser</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>AcNum</th>
+                <td>{{ realiser.acNum }}</td>
+            </tr>
+            <tr>
+                <th>VisMatricule</th>
+                <td>{{ realiser.visMatricule }}</td>
+            </tr>
+            <tr>
+                <th>ReaMttfrais</th>
+                <td>{{ realiser.reaMttfrais }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('realiser_index') }}">back to list</a>
+
+    <a href="{{ path('realiser_edit', {'acNum': realiser.acNum}) }}">edit</a>
+
+    {{ include('realiser/_delete_form.html.twig') }}
+{% endblock %}

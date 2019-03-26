@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inviter index{% endblock %}
+
+{% block body %}
+    <h1>Inviter index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>AcNum</th>
+                <th>PraNum</th>
+                <th>Specialisteon</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for inviter in inviters %}
+            <tr>
+                <td>{{ inviter.acNum }}</td>
+                <td>{{ inviter.praNum }}</td>
+                <td>{{ inviter.specialisteon ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('inviter_show', {'acNum': inviter.acNum}) }}">show</a>
+                    <a href="{{ path('inviter_edit', {'acNum': inviter.acNum}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('inviter_new') }}">Create new</a>
+{% endblock %}
