@@ -18,6 +18,7 @@ class Travailler
      * @ORM\Column(name="VIS_MATRICULE", type="string", length=10, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToMany(targetEntity="Visisteur", mappedBy="visMatricule")
      */
     private $visMatricule;
 
@@ -27,6 +28,7 @@ class Travailler
      * @ORM\Column(name="JJMMAA", type="datetime", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * 
      */
     private $jjmmaa;
 
@@ -36,6 +38,7 @@ class Travailler
      * @ORM\Column(name="REG_CODE", type="string", length=2, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToMany(targetEntity="Region", mappedBy="regCode")
      */
     private $regCode;
 
@@ -43,6 +46,7 @@ class Travailler
      * @var string|null
      *
      * @ORM\Column(name="TRA_ROLE", type="string", length=11, nullable=true)
+     * 
      */
     private $traRole;
 

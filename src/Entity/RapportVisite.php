@@ -18,6 +18,8 @@ class RapportVisite
      * @ORM\Column(name="VIS_MATRICULE", type="string", length=10, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToOne(targetEntity="Visiteur")
+     * @JoinColumn(name="visMatriculeFK", referencedColumnName="visMatricule")
      */
     private $visMatricule;
 
@@ -26,7 +28,7 @@ class RapportVisite
      *
      * @ORM\Column(name="RAP_NUM", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * 
      */
     private $rapNum;
 
@@ -34,6 +36,9 @@ class RapportVisite
      * @var int
      *
      * @ORM\Column(name="PRA_NUM", type="integer", nullable=false)
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToOne(targetEntity="Praticien")
+     * @JoinColumn(name="praNumFK", referencedColumnName="praNum")
      */
     private $praNum;
 
@@ -41,6 +46,7 @@ class RapportVisite
      * @var \DateTime|null
      *
      * @ORM\Column(name="RAP_DATE", type="datetime", nullable=true)
+     * @OneToOne(targetEntity="Praticien", mappedBy="praNum")
      */
     private $rapDate;
 

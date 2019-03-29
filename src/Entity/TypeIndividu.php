@@ -18,6 +18,7 @@ class TypeIndividu
      * @ORM\Column(name="TIN_CODE", type="string", length=5, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @OneToMany(targetEntity="Prescrire", mappedBy="tinCode")
      */
     private $tinCode;
 

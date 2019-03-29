@@ -25,6 +25,8 @@ class Region
      * @var string
      *
      * @ORM\Column(name="SEC_CODE", type="string", length=1, nullable=false)
+     * @OneToOne(targetEntity="Secteur")
+     * @JoinColumn(name="secCodeFK", referencedColumnName="secCode")
      */
     private $secCode;
 

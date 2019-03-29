@@ -18,6 +18,7 @@ class Posseder
      * @ORM\Column(name="PRA_NUM", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToMany(targetEntity="Praticien", mappedBy="praNum")
      */
     private $praNum;
 
@@ -27,6 +28,7 @@ class Posseder
      * @ORM\Column(name="SPE_CODE", type="string", length=5, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToMany(targetEntity="Specialite", mappedBy="speCode")
      */
     private $speCode;
 

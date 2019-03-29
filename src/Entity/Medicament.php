@@ -32,6 +32,8 @@ class Medicament
      * @var string
      *
      * @ORM\Column(name="FAM_CODE", type="string", length=3, nullable=false)
+     * @OneToOne(targetEntity="Famille")
+     * @JoinColumn(name="famCodeFK", referencedColumnName="famCode")
      */
     private $famCode;
 

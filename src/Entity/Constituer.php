@@ -18,6 +18,8 @@ class Constituer
      * @ORM\Column(name="MED_DEPOTLEGAL", type="string", length=10, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToMany(targetEntity="Medicament", mappedBy="medDepotlegal")
+     * 
      */
     private $medDepotlegal;
 
@@ -27,6 +29,7 @@ class Constituer
      * @ORM\Column(name="CMP_CODE", type="string", length=4, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToMany(targetEntity="Composant", mappedBy="cmpCode")
      */
     private $cmpCode;
 

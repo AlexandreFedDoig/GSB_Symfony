@@ -18,6 +18,7 @@ class Prescrire
      * @ORM\Column(name="MED_DEPOTLEGAL", type="string", length=10, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToMany(targetEntity="Medicament", mappedBy="medDepotlegal")
      */
     private $medDepotlegal;
 
@@ -27,6 +28,7 @@ class Prescrire
      * @ORM\Column(name="TIN_CODE", type="string", length=5, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToMany(targetEntity="TypeIndividu", mappedBy="tinCode")
      */
     private $tinCode;
 
@@ -36,6 +38,7 @@ class Prescrire
      * @ORM\Column(name="DOS_CODE", type="string", length=10, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToMany(targetEntity="Dosage", mappedBy="dosCode")
      */
     private $dosCode;
 

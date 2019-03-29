@@ -18,6 +18,7 @@ class Formuler
      * @ORM\Column(name="MED_DEPOTLEGAL", type="string", length=10, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToMany(targetEntity="Medicament", mappedBy="medDepotlegal")
      */
     private $medDepotlegal;
 
@@ -27,6 +28,7 @@ class Formuler
      * @ORM\Column(name="PRE_CODE", type="string", length=2, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToMany(targetEntity="Presentation", mappedBy="preCode")
      */
     private $preCode;
 

@@ -18,6 +18,7 @@ class Interagir
      * @ORM\Column(name="MED_PERTURBATEUR", type="string", length=10, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToMany(targetEntity="Medicament", mappedBy="medDepotlegal")
      */
     private $medPerturbateur;
 
@@ -27,6 +28,7 @@ class Interagir
      * @ORM\Column(name="MED_MED_PERTURBE", type="string", length=10, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToMany(targetEntity="Medicament", mappedBy="medDepotlegal")
      */
     private $medMedPerturbe;
 

@@ -18,6 +18,7 @@ class Inviter
      * @ORM\Column(name="AC_NUM", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToMany(targetEntity="ActiviteCompl", mappedBy="acNum")
      */
     private $acNum;
 
@@ -27,6 +28,7 @@ class Inviter
      * @ORM\Column(name="PRA_NUM", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @OneToMany(targetEntity="Praticien", mappedBy="praNum")
      */
     private $praNum;
 
