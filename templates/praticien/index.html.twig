@@ -1,47 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Praticien index{% endblock %}
+{% block title %}Praticiens{% endblock %}
 
 {% block body %}
-    <h1>Praticien index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>PraNum</th>
-                <th>PraNom</th>
-                <th>PraPrenom</th>
-                <th>PraAdresse</th>
-                <th>PraCp</th>
-                <th>PraVille</th>
-                <th>PraCoefnotoriete</th>
-                <th>TypCode</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for praticien in praticiens %}
-            <tr>
-                <td>{{ praticien.praNum }}</td>
-                <td>{{ praticien.praNom }}</td>
-                <td>{{ praticien.praPrenom }}</td>
-                <td>{{ praticien.praAdresse }}</td>
-                <td>{{ praticien.praCp }}</td>
-                <td>{{ praticien.praVille }}</td>
-                <td>{{ praticien.praCoefnotoriete }}</td>
-                <td>{{ praticien.typCode }}</td>
-                <td>
-                    <a href="{{ path('praticien_show', {'praNum': praticien.praNum}) }}">show</a>
-                    <a href="{{ path('praticien_edit', {'praNum': praticien.praNum}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('praticien_new') }}">Create new</a>
+<div class="container">        
+        <table id="table_id" class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prenom</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Ville</th>
+                    <th scope="col">Code Postale</th>
+                    <th scope="col">Coeff. Notoriete</th>
+                    <th scope="col">Type</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+            {% for p in praticiens %}
+               	   <tr class="table-active">
+                    	<td>{{ p.getPraNom }}</td>
+                   		<td>{{ p.getPraPrenom }}</td>
+                    	<td>{{ p.getPraAdresse }}</td>
+                   		<td>{{ p.getPraVille }}</td>
+                    	<td>{{ p.getPraCp }}</td>
+                    	<td>{{ p.getPraCoefnotoriete }}</td>
+                    	<td>{{ p.getTypCode }}</td>
+                    </tr> 
+    		{% endfor %}
+            <tbody>
+        
+		</table> 
+	</div>
 {% endblock %}

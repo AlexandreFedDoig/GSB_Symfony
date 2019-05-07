@@ -1,5 +1,0 @@
-<form method="post" action="{{ path('switchboard_items_delete', {'switchboardid': switchboard_item.switchboardid}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ switchboard_item.switchboardid) }}">
-    <button class="btn">Delete</button>
-</form>

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte-Rendu{% endblock %}
+
+{% block body %}
+	
+	{{ form_start(formRap) }}
+	
+	{{ form_row(formRap.visMatricule, {'attr':{'class': 'form-control'}}) }}
+	{{ form_row(formRap.rapNum, {'attr':{'class': 'form-control'}}) }}
+	{{ form_row(formRap.praNum, {'attr':{'class': 'form-control'}}) }}
+	{{ form_row(formRap.rapDate, {'attr':{'class': 'bnt-group'}}) }}
+	{{ form_row(formRap.rapBilan, {'attr':{'class': 'form-control'}}) }}
+	{{ form_row(formRap.rapMotif, {'attr':{'class': 'form-control'}}) }}
+	
+	<button type="submit" class="btn btn-primary">Sauvegarder</button>
+	
+	{{ form_start(formRap) }}
+
+{% endblock %}

@@ -1,3 +1,24 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+logout:
+    path: /logout
+       
+accueil:
+    path: /
+    controller: App\Controller\AccueilController::index
+
+compte_rendu:
+    path: /compte-rendu
+    controller: App\Controller\CompteRenduController::index
+    
+praticien:
+    path: /praticien
+    controller: App\Controller\PraticienController::index
+
+
+
