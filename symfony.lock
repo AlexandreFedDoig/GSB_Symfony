@@ -93,14 +93,33 @@
     "doctrine/reflection": {
         "version": "v1.0.0"
     },
+    "easycorp/easyadmin-bundle": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "0a51040a43c6f2172a3a0135cd15daf2043905d7"
+        },
+        "files": [
+            "./config/packages/easy_admin.yaml",
+            "./config/routes/easy_admin.yaml"
+        ]
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
+    },
+    "knplabs/knp-components": {
+        "version": "v1.3.10"
     },
     "knplabs/knp-menu": {
         "version": "2.3.0"
     },
     "knplabs/knp-menu-bundle": {
         "version": "v2.2.1"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v3.0.0"
     },
     "monolog/monolog": {
         "version": "1.24.0"
@@ -113,6 +132,9 @@
     },
     "ocramius/proxy-manager": {
         "version": "2.2.2"
+    },
+    "pagerfanta/pagerfanta": {
+        "version": "v2.1.2"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -137,6 +159,9 @@
         "files": [
             "./config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "symfony/asset": {
+        "version": "v4.2.8"
     },
     "symfony/cache": {
         "version": "v4.2.4"
@@ -174,6 +199,9 @@
     },
     "symfony/event-dispatcher": {
         "version": "v4.2.4"
+    },
+    "symfony/expression-language": {
+        "version": "v4.2.8"
     },
     "symfony/filesystem": {
         "version": "v4.2.4"
@@ -319,6 +347,19 @@
     "symfony/stopwatch": {
         "version": "v4.2.4"
     },
+    "symfony/translation": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "1fb02a6e1c8f3d4232cce485c9afa868d63b115a"
+        },
+        "files": [
+            "./config/packages/translation.yaml",
+            "./translations/.gitignore"
+        ]
+    },
     "symfony/twig-bridge": {
         "version": "v4.2.4"
     },
@@ -382,6 +423,18 @@
     },
     "twbs/bootstrap": {
         "version": "v4.3.1"
+    },
+    "twig/extensions": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "ddb2e0a77773b7fd75d8d649545f174e664500ab"
+        },
+        "files": [
+            "./config/packages/twig_extensions.yaml"
+        ]
     },
     "twig/twig": {
         "version": "v2.6.2"

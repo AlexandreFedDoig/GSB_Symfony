@@ -8,30 +8,27 @@
         <table id="table_id" class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Prenom</th>
-                    <th scope="col">Adresse</th>
-                    <th scope="col">Ville</th>
-                    <th scope="col">Code Postale</th>
-                    <th scope="col">Coeff. Notoriete</th>
-                    <th scope="col">Type</th>
+                    <th scope="col"{% if praticiens.isSorted('s.praNom') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(praticiens, 'Nom', 's.praNom')| raw }}</th>      
+                    <th scope="col"{% if praticiens.isSorted('s.praVille') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(praticiens, 'Ville', 's.praVille')| raw }}</th>
+                    <th scope="col"{% if praticiens.isSorted('s.typCode') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(praticiens, 'Type', 's.typCode')| raw }}</th>
+               		<th scope="col">Action</th>
                 </tr>
             </thead>
             
             <tbody>
             {% for p in praticiens %}
                	   <tr class="table-active">
-                    	<td>{{ p.getPraNom }}</td>
-                   		<td>{{ p.getPraPrenom }}</td>
-                    	<td>{{ p.getPraAdresse }}</td>
+                    	<td>{{ p.PraNom }}</td>      		
                    		<td>{{ p.getPraVille }}</td>
-                    	<td>{{ p.getPraCp }}</td>
-                    	<td>{{ p.getPraCoefnotoriete }}</td>
                     	<td>{{ p.getTypCode }}</td>
+                    	<td><a href="{{ path('details', {'id':p.praNum}) }}" class="btn btn-secondary" > Details</a></td>
                     </tr> 
     		{% endfor %}
             <tbody>
         
-		</table> 
+		</table>
+		<div class="button">
+            {{ knp_pagination_render(praticiens) }}
+        </div> 
 	</div>
 {% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Praticiens{% endblock %}
+
+{% block body %}
+
+<div class="container">        
+        <table id="table_id" class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prenom</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Ville</th>
+                    <th scope="col">Code Postale</th>
+                    <th scope="col">Coeff. Notoriete</th>
+                    <th scope="col">Type</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+               	   <tr class="table-active">
+                    	<td>{{ prat.PraNom }}</td>
+                   		<td>{{ prat.getPraPrenom }}</td>
+                    	<td>{{ prat.getPraAdresse }}</td>
+                   		<td>{{ prat.getPraVille }}</td>
+                    	<td>{{ prat.getPraCp }}</td>
+                    	<td>{{ prat.getPraCoefnotoriete }}</td>
+                    	<td>{{ prat.getTypCode }}</td>
+                    </tr> 
+            <tbody>
+        
+		</table>
+	</div>
+{% endblock %}
