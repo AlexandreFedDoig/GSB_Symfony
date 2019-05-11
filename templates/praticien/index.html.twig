@@ -4,7 +4,15 @@
 
 {% block body %}
 
-<div class="container">        
+<div class="container">
+		
+		{#
+		<form action="{{ path('praticien') }}" method="get">
+			<label for="filter">TypeCode</label>
+			<input name="filter" type="text">
+			<button type="submit" class="btn btn-primary btn-sm">Rechercher</button>
+		</form>
+		#}        
         <table id="table_id" class="table table-hover">
             <thead>
                 <tr>
@@ -17,7 +25,7 @@
             
             <tbody>
             {% for p in praticiens %}
-               	   <tr class="table-active">
+               	   <tr>
                     	<td>{{ p.PraNom }}</td>      		
                    		<td>{{ p.getPraVille }}</td>
                     	<td>{{ p.getTypCode }}</td>
@@ -25,7 +33,26 @@
                     </tr> 
     		{% endfor %}
             <tbody>
-        
+            <tfoot>
+            	<tr>
+            		 <th scope="col">
+            		 	<form action="{{ path('praticien') }}" method="get">
+            		 		<input class="form-control mr-sm-2" name="filter3" type="text" placeholder="Nom">
+						</form>
+        			</th>
+            		 <th scope="col">
+            		 	<form action="{{ path('praticien') }}" method="get">
+            		 		<input class="form-control mr-sm-2" name="filter2" type="text" placeholder="Ville">
+						</form>
+        			</th>
+            		 <th scope="col">
+            		 	<form action="{{ path('praticien') }}" method="get">
+            		 		<input class="form-control mr-sm-2" name="filter" type="text" placeholder="Type">
+						</form>
+        			</th>
+        			<th></th>
+        		</tr>
+        	</tfoot>
 		</table>
 		<div class="button">
             {{ knp_pagination_render(praticiens) }}

@@ -8,6 +8,7 @@ use App\Entity\Praticien;
 use App\Repository\PraticienRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
@@ -19,6 +20,28 @@ class PraticienController extends AbstractController
     public function index(Request $request, PaginatorInterface $paginator)
     {
         $praticiensQ = $this->getDoctrine()->getRepository(Praticien::class)->getAll();
+        
+        if($request->query->getAlnum('filter')){
+            $praticiensQ
+                ->where('s.typCode LIKE :typCode')
+                ->setParameter('typCode','%' . $request->query->getAlnum('filter') . '%');
+                
+        }
+        
+        if($request->query->getAlnum('filter2')){
+            $praticiensQ
+            ->where('s.praVille LIKE :praVille')
+            ->setParameter('praVille','%' . $request->query->getAlnum('filter2') . '%');
+            
+        }
+        
+        if($request->query->getAlnum('filter3')){
+            $praticiensQ
+            ->where('s.praNom LIKE :praNom')
+            ->setParameter('praNom','%' . $request->query->getAlnum('filter3') . '%');
+            
+        }
+        
         
         $praticiens = $paginator->paginate(
             // Doctrine Query, not results

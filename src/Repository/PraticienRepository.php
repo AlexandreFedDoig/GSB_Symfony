@@ -22,7 +22,7 @@ class PraticienRepository extends ServiceEntityRepository
     public function getAll()
     {
         return $this->createQueryBuilder('s')
-        ->getQuery()
+        
         
         ;
     }
