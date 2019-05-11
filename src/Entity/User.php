@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
+ * @ORM\Table(name="user", indexes={@ORM\Index(name="SEC_CODE", columns={"SEC_CODE"}), @ORM\Index(name="LAB_CODE", columns={"LAB_CODE"})})
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User implements UserInterface, \Serializable
@@ -32,6 +33,70 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="VIS_MATRICULE", type="string", length=10, nullable=false)
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $visMatricule;
+    
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="VIS_NOM", type="string", length=25, nullable=true)
+     */
+    private $visNom;
+    
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="VIS_PRENOM", type="string", length=50, nullable=true)
+     */
+    private $visPrenom;
+    
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="VIS_ADRESSE", type="string", length=50, nullable=true)
+     */
+    private $visAdresse;
+    
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="VIS_CP", type="string", length=5, nullable=true)
+     */
+    private $visCp;
+    
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="VIS_VILLE", type="string", length=30, nullable=true)
+     */
+    private $visVille;
+    
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="VIS_DATEEMBAUCHE", type="datetime", nullable=true)
+     */
+    private $visDateembauche;
+    
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="SEC_CODE", type="string", length=1, nullable=true)
+     */
+    private $secCode;
+    
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="LAB_CODE", type="string", length=2, nullable=true)
+     */
+    private $labCode;
 
     public function getId(): ?int
     {
