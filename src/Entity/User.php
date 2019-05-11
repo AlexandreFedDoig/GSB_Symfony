@@ -190,4 +190,112 @@ class User implements UserInterface, \Serializable
             // $this->salt
             ) = unserialize($serialized, ['allowed_classes' => false]);
     }
+
+    public function getVisMatricule(): ?string
+    {
+        return $this->visMatricule;
+    }
+
+    public function setVisMatricule(string $visMatricule): self
+    {
+        $this->visMatricule = $visMatricule;
+
+        return $this;
+    }
+
+    public function getVisNom(): ?string
+    {
+        return $this->visNom;
+    }
+
+    public function setVisNom(?string $visNom): self
+    {
+        $this->visNom = $visNom;
+
+        return $this;
+    }
+
+    public function getVisPrenom(): ?string
+    {
+        return $this->visPrenom;
+    }
+
+    public function setVisPrenom(?string $visPrenom): self
+    {
+        $this->visPrenom = $visPrenom;
+
+        return $this;
+    }
+
+    public function getVisAdresse(): ?string
+    {
+        return $this->visAdresse;
+    }
+
+    public function setVisAdresse(?string $visAdresse): self
+    {
+        $this->visAdresse = $visAdresse;
+
+        return $this;
+    }
+
+    public function getVisCp(): ?string
+    {
+        return $this->visCp;
+    }
+
+    public function setVisCp(?string $visCp): self
+    {
+        $this->visCp = $visCp;
+
+        return $this;
+    }
+
+    public function getVisVille(): ?string
+    {
+        return $this->visVille;
+    }
+
+    public function setVisVille(?string $visVille): self
+    {
+        $this->visVille = $visVille;
+
+        return $this;
+    }
+
+    public function getVisDateembauche(): ?\DateTimeInterface
+    {
+        return $this->visDateembauche;
+    }
+
+    public function setVisDateembauche(?\DateTimeInterface $visDateembauche): self
+    {
+        $this->visDateembauche = $visDateembauche;
+
+        return $this;
+    }
+
+    public function getSecCode(): ?string
+    {
+        return $this->secCode;
+    }
+
+    public function setSecCode(?string $secCode): self
+    {
+        $this->secCode = $secCode;
+
+        return $this;
+    }
+
+    public function getLabCode(): ?string
+    {
+        return $this->labCode;
+    }
+
+    public function setLabCode(?string $labCode): self
+    {
+        $this->labCode = $labCode;
+
+        return $this;
+    }
 }
