@@ -8,8 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
  * RapportVisite
  *
  * @ORM\Table(name="rapport_visite", indexes={@ORM\Index(name="PRA_NUM", columns={"PRA_NUM"}), @ORM\Index(name="VIS_MATRICULE", columns={"VIS_MATRICULE"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\RapportVisiteRepository")
  */
+
 class RapportVisite
 {
     /**
