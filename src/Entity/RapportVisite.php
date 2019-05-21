@@ -116,6 +116,20 @@ class RapportVisite
 
         return $this;
     }
+    
+    public function setVisMatricule(?string $visMatricule): self
+    {
+        $this->visMatricule = $visMatricule;
+        
+        return $this;
+    }
+    
+    public function setRapNum(?string $rapNum): self
+    {
+        $this->rapNum = $rapNum;
+        
+        return $this;
+    }
 
 
 }

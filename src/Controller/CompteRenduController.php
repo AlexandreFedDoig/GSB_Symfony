@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\RapportVisite;
+use App\Entity\Praticien;
 use App\Form\RapportVisiteType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -16,6 +17,8 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 
 
 
@@ -67,5 +70,51 @@ class CompteRenduController extends AbstractController
         return $this->render('compte_rendu/index.html.twig', [
             'rapport' => $rapport,
         ]);
+    }
+    
+    /**
+     * @Route("/compte-rendu/create", name="compte_rendu_creation")
+     */
+    public function create(Request $request, ObjectManager $manager) {
+        
+            $rapport = new RapportVisite();
+            
+            $allPra = $this->getDoctrine()->getRepository(Praticien::Class)->findAll();
+            foreach($allPra as $p) {
+                $choix[$p->getPraNom().' '.$p->getPraPrenom()] = $p->getPraNum();
+            }
+            dump($choix);
+            $form = $this->createFormBuilder($rapport)
+                            ->add('praNum', ChoiceType::class, [
+                                'choices' => $choix,
+                            ])  
+                            ->add('rapBilan')
+                            ->add('rapMotif')
+                            ->getForm();
+            
+            
+            $form->handlerequest($request);
+            
+         
+            
+            
+            
+            $user = $this->get('security.token_storage')->getToken()->getUser()->getVisMatricule();
+            $num = count($this->getDoctrine()->getRepository(RapportVisite::class)->findBy(array('visMatricule'=>$user)))+1;
+            
+            if($form->isSubmitted() && $form->isValid()){
+                $rapport->setVisMatricule($this->get('security.token_storage')->getToken()->getUser()->getVisMatricule());
+                $rapport->setRapDate(new \DateTime('now'));
+                $rapport->setRapNum($num);
+                
+                $manager->persist($rapport);
+                $manager->flush();
+                
+                return $this->RedirectToRoute('compte_rendu');
+            }
+            
+            return $this->render('compte_rendu/create.html.twig', [
+                'formRap' => $form->createView()
+            ]);
     }
 }

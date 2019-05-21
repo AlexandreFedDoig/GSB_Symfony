@@ -23,7 +23,7 @@
             {% for rap in rapport %}
                	   <tr>
                     	<td>{{ rap.getRapNum }}</td>      		
-                   		<td>{{ rap.getRapNum }}</td>
+                   		<td>{{ rap.getPraNum }}</td>
                     	<td>{{ rap.getRapDate|date("m/d/Y") }}</td>
                     	<td>{{ rap.getrapBilan }}</td>
                     	<td>{{ rap.getrapMotif }}</td>
@@ -37,7 +37,7 @@
             {{ knp_pagination_render(rapport) }}
         </div> 
         
-        <div class="btn btn-primary">Nouveau</div>
+        <a href="{{ path('compte_rendu_creation')}}" class="btn btn-primary" > Nouveau</a>
         
 	</div>
 {% endblock %}
