@@ -175,7 +175,7 @@ class User implements UserInterface, \Serializable
             $this->password,
             $this->email,
             // see section on salt below
-            // $this->salt,
+            //$this->salt,
         ]);
     }
     

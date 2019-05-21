@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+
+
+
+{{ form_start(formProfil) }}
+
+	
+	
+	{{ form_row(formProfil._token) }}
+	{{ form_row(formProfil.visNom, {'attr':{'class': 'form-control', 'value' : app.user.visNom}}) }}
+	{{ form_row(formProfil.visPrenom, {'attr':{'class': 'form-control','value' : app.user.visPrenom}}) }}
+	{{ form_row(formProfil.visAdresse, {'attr':{'class': 'form-control','value' : app.user.visAdresse}}) }}
+	{{ form_row(formProfil.visCp, {'attr':{'class': 'form-control','value' : app.user.visCp}}) }}
+	{{ form_row(formProfil.visVille, {'attr':{'class': 'form-control','value' : app.user.visVille}}) }}
+	{{ form_row(formProfil.visDateembauche, {'attr':{'class': 'form-control'}}) }}
+	{{ form_row(formProfil.username, {'attr':{'class': 'form-control','value' : app.user.username}}) }}
+	{{ form_row(formProfil.password, {'attr':{'class': 'form-control'}}) }}</br>
+	
+	<button type="submit" onClick="afficheBoutton()" class="btn btn-primary">Sauvegarder</button>
+	<a class = "btn btn-primary" href = "/">Retour</a>
+	
+	
+	{{ form_start(formProfil) }}
+	
+	
+{% endblock %}
