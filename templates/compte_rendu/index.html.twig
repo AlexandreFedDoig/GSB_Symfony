@@ -23,11 +23,11 @@
             {% for rap in rapport %}
                	   <tr>
                     	<td>{{ rap.getRapNum }}</td>      		
-                   		<td>{{ rap.getPraNum }}</td>
-                    	<td>{{ rap.getRapDate|date("m/d/Y") }}</td>
+                   		<td>{{ pra[rap.getPraNum] }}</td>
+                    	<td>{{ rap.getRapDate|date("d/m/Y") }}</td>
                     	<td>{{ rap.getrapBilan }}</td>
                     	<td>{{ rap.getrapMotif }}</td>
-                    	<td><a class="btn btn-secondary" > Modifier</a></td>
+                    	<td><a class="btn btn-secondary" href="{{ path('compte_rendu_show', {'id':rap.getRapNum}) }}"> Modifier</a></td>
                     </tr> 
     		{% endfor %}
             <tbody>

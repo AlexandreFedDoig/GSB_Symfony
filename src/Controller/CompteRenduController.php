@@ -30,6 +30,11 @@ class CompteRenduController extends AbstractController
         $user = $this->get('security.token_storage')->getToken()->getUser()->getVisMatricule();
         $rapQ = $this->getDoctrine()->getRepository(RapportVisite::class)->findBy(array('visMatricule'=>$user));
         
+        $allPra = $this->getDoctrine()->getRepository(Praticien::Class)->findAll();
+        foreach($allPra as $p) {
+            $tabPra[$p->getPraNum()] = $p->getPraNom().' '.$p->getPraPrenom();
+        }
+        
         if($request->query->getAlnum('filter1')){
             $rapQ
             ->where('r.rapNum LIKE :rapNum')
@@ -69,6 +74,7 @@ class CompteRenduController extends AbstractController
         
         return $this->render('compte_rendu/index.html.twig', [
             'rapport' => $rapport,
+            'pra' => $tabPra,
         ]);
     }
     
@@ -83,7 +89,7 @@ class CompteRenduController extends AbstractController
             foreach($allPra as $p) {
                 $choix[$p->getPraNom().' '.$p->getPraPrenom()] = $p->getPraNum();
             }
-            dump($choix);
+            
             $form = $this->createFormBuilder($rapport)
                             ->add('praNum', ChoiceType::class, [
                                 'choices' => $choix,
@@ -93,12 +99,7 @@ class CompteRenduController extends AbstractController
                             ->getForm();
             
             
-            $form->handlerequest($request);
-            
-         
-            
-            
-            
+            $form->handlerequest($request);    
             $user = $this->get('security.token_storage')->getToken()->getUser()->getVisMatricule();
             $num = count($this->getDoctrine()->getRepository(RapportVisite::class)->findBy(array('visMatricule'=>$user)))+1;
             
@@ -116,5 +117,59 @@ class CompteRenduController extends AbstractController
             return $this->render('compte_rendu/create.html.twig', [
                 'formRap' => $form->createView()
             ]);
+    }
+    
+    
+    /**
+     * @Route("/compte-rendu/{id}", name="compte_rendu_show")
+     */
+    public function show(Request $request, ObjectManager $manager, $id) {
+        
+        //$rapport = new RapportVisite();
+        $user = $this->get('security.token_storage')->getToken()->getUser()->getVisMatricule();
+        $rapport = $this->getDoctrine()->getRepository(RapportVisite::class)->findOneBy(array('visMatricule'=>$user, 'rapNum'=>$id));
+        
+        $rapBilanOld = $rapport->getRapBilan();
+        $rapMotifOld = $rapport->getRapMotif();
+        
+        $allPra = $this->getDoctrine()->getRepository(Praticien::Class)->findAll();   
+        
+        foreach($allPra as $p) {
+            $choix[$p->getPraNom().' '.$p->getPraPrenom()] = $p->getPraNum();
+        }
+        
+        
+        
+        $form = $this->createFormBuilder($rapport)
+        ->add('praNum', ChoiceType::class, [
+            'choices' => $choix,
+        ])
+        ->add('rapBilan')
+        ->add('rapMotif')
+        ->getForm();
+        
+       
+        
+        $form->handlerequest($request);    
+       
+      
+        
+        if($form->isSubmitted() && $form->isValid()){
+            if (!($rapport->getRapBilan() == $rapBilanOld && $rapMotifOld == $rapport->getRapMotif())) {
+                $rapport->setRapDate(new \DateTime('now'));
+            }
+                    
+            
+            
+        $manager->persist($rapport);
+        $manager->flush();
+            
+            return $this->RedirectToRoute('compte_rendu');
+        }
+        
+        return $this->render('compte_rendu/show.html.twig', [
+            'formRap' => $form->createView(),
+            'rapport' => $rapport
+        ]);
     }
 }

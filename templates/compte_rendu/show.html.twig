@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte-Rendu{% endblock %}
+
+{% block body %}
+	
+	{{ form_start(formRap) }}
+	
+    {{ form_row(formRap._token) }}
+	{{ form_row(formRap.praNum, {'attr':{'class': 'form-control'}}) }}
+	{{ form_row(formRap.rapBilan, {'attr':{'class': 'form-control'}}) }}
+	{{ form_row(formRap.rapMotif, {'attr':{'class': 'form-control'}}) }}
+	
+	<button type="submit" class="btn btn-primary" onClick="document.location.href'{{ path('compte_rendu')}}'">Sauvegarder</button>
+	
+	{{ form_start(formRap) }}
+
+{% endblock %}
