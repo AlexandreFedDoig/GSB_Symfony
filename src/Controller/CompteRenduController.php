@@ -94,8 +94,12 @@ class CompteRenduController extends AbstractController
                             ->add('praNum', ChoiceType::class, [
                                 'choices' => $choix,
                             ])  
-                            ->add('rapBilan')
-                            ->add('rapMotif')
+                            ->add('rapBilan', null, [
+                                'required'   => true
+                            ])
+                            ->add('rapMotif', null, [
+                                'required'   => true
+                            ])
                             ->getForm();
             
             
